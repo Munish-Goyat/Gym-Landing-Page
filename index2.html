@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Membership Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('images/home/home-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #fa5a20;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: rgba(0, 0, 0, 0.75);
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fa5a20;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #fa5a20;
+        }
+
+        input, select, textarea {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.24);
+            color: #fa5a20;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border: 2px solid #fa5a20;
+            background: rgba(0, 0, 0, 0.6);
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 10px;
+        }
+
+        button {
+            background-color: #fa5a20;
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(250, 90, 32, 0.3);
+        }
+
+        button:hover {
+            background-color: #e24e17;
+            transform: scale(1.03);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #fa5a20;
+            border-radius: 8px;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            color: #fa5a20;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gym Membership Form</h1>
+        <form id="gymForm">
+            <div class="section">
+                <h2>Personal Information</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required></input>
+
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="section">
+                <h2>Emergency Contact</h2>
+                <label for="emergencyPhone">Contact Number:</label>
+                <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+
+                <label for="relationship">Relationship:</label>
+                <input type="text" id="relationship" name="relationship" required>
+
+                <label for="altPhone">Alternate Phone Number:</label>
+                <input type="tel" id="altPhone" name="altPhone">
+            </div>
+
+            <div class="section">
+                <h2>Membership Details</h2>
+                <label for="membershipType">Membership Type:</label>
+                <select id="membershipType" name="membershipType" required>
+                    <option value="monthly">Monthly</option>
+                    <option value="annual">Annual</option>
+                </select>
+
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate" name="startDate" required>
+
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate" name="endDate" required>
+
+                <label for="paymentMethod">Payment Method:</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="creditCard">Credit Card</option>
+                    <option value="debitCard">Debit Card</option>
+                    <option value="cash">Cash</option>
+                    <option value="online">Online Payment</option>
+                </select>
+            </div>
+
+            <div class="section">
+                <h2>Health Information</h2>
+                <label for="healthCondition">Health Condition:</label>
+                <input type="text" id="healthCondition" name="healthCondition"></input>
+
+                <label for="medications">Medications:</label>
+                <input type="text" id="medications" name="medications"></input>
+
+                <label for="fitnessGoals">Fitness Goals:</label>
+                <input type="text" id="fitnessGoals" name="fitnessGoals" required></input>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('gymForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const membershipType = document.getElementById('membershipType').value;
+        const startDate = new Date(document.getElementById('startDate').value);
+        const endDate = new Date(document.getElementById('endDate').value);
+
+        // Validate membership duration
+        if (!isValidDuration(membershipType, startDate, endDate)) {
+            return; // Stop form submission
+        }
+
+        alert('Form submitted successfully!');
+        this.reset();
+    });
+
+    function isValidDuration(type, start, end) {
+        if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+            alert('Please select valid start and end dates.');
+            return false;
+        }
+
+        if (end <= start) {
+            alert('End date must be after the start date.');
+            return false;
+        }
+
+        let minEndDate;
+
+        if (type === 'monthly') {
+            minEndDate = new Date(start);
+            minEndDate.setMonth(minEndDate.getMonth() + 1);
+            if (end < minEndDate) {
+                alert('For a monthly membership, the end date must be at least 1 month after the start date.');
+                return false;
+            }
+        }
+
+        if (type === 'annual') {
+            minEndDate = new Date(start);
+            minEndDate.setFullYear(minEndDate.getFullYear() + 1);
+            if (end < minEndDate) {
+                alert('For an annual membership, the end date must be at least 1 year after the start date.');
+                return false;
+            }
+        }
+
+        return true;
+    }
+    </script>
+</body>
+</html>
+
